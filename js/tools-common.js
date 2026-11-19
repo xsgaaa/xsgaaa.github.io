@@ -1,6 +1,40 @@
 (function (window) {
   'use strict';
 
+  var TOOL_MENU = [
+    { slug: 'json', icon: '{ }', name: 'JSON 转换' },
+    { slug: 'jsonpath', icon: '⌖', name: 'JSONPath 定位' },
+    { slug: 'excel', icon: '⊞', name: 'Excel 转 JSON' },
+    { slug: 'mermaid', icon: '❖', name: 'Mermaid 渲染' },
+    { slug: 'image', icon: '▣', name: '图片压缩' },
+    { slug: 'uuid', icon: '⚿', name: 'UUID 生成' },
+    { slug: 'codec', icon: '#', name: '编解码/哈希' },
+    { slug: 'timestamp', icon: '⏱', name: '时间戳/进制' },
+    { slug: 'regex', icon: '.*', name: '正则测试' },
+    { slug: 'diff', icon: '±', name: '文本对比' }
+  ];
+
+  function renderNavStrip() {
+    var main = document.getElementById('main-contain');
+    var headerCard = document.querySelector('.tools-header-card');
+    if (!main || !headerCard || document.querySelector('.tools-hub-controls')) return;
+
+    var curPath = window.location.pathname;
+    var nav = document.createElement('nav');
+    nav.className = 'tools-nav-strip';
+    nav.setAttribute('aria-label', '工具快捷菜单');
+
+    var homePill = '<a href="/tools/" class="tools-nav-pill">☷ 全部工具</a>';
+    var pills = TOOL_MENU.map(function (t) {
+      var isActive = curPath.indexOf('/tools/' + t.slug) !== -1;
+      return '<a href="/tools/' + t.slug + '/" class="tools-nav-pill' + (isActive ? ' is-active' : '') + '">' +
+        '<span>' + t.icon + '</span><span>' + t.name + '</span></a>';
+    }).join('');
+
+    nav.innerHTML = homePill + pills;
+    main.insertBefore(nav, headerCard);
+  }
+
   function notify(msg) {
     if (window.mdui && typeof mdui.snackbar === 'function') {
       mdui.snackbar({ message: msg, timeout: 2000, position: 'bottom' });
@@ -79,6 +113,8 @@
     el.textContent = message;
     el.classList.add('is-visible', type === 'error' ? 'is-error' : 'is-success');
   }
+
+  renderNavStrip();
 
   window.ToolsCommon = {
     notify: notify,

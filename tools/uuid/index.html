@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="stylesheet" href="/css/mdui.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
+  <link rel="stylesheet" href="/css/tools.css">
+  <title>UUID / 随机 ID 生成 - 开发者工具箱</title>
+</head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  <header class="mdui-appbar mdui-appbar-fixed">
+    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/tools/" class="header-subtitle mdui-typo-headline">工具箱</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">工具导航</a>
+    </div>
+    <div id="sidebar-tab1" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
+        <a href="/tools/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
+        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
+        <div class="mdui-list-item mdui-ripple">
+          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
+          <div class="mdui-list-item-content">夜间模式</div>
+          <label class="mdui-switch" id="darkmode"><input type="checkbox" id="nightmode_switch"/><i class="mdui-switch-icon"></i></label>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar-tab2" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/tools/json/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON 格式化与转换</div></a>
+        <a href="/tools/jsonpath/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSONPath 定位</div></a>
+        <a href="/tools/excel/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel / CSV 转 JSON</div></a>
+        <a href="/tools/mermaid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Mermaid 图表渲染</div></a>
+        <a href="/tools/image/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">图片压缩与转换</div></a>
+        <a href="/tools/uuid/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-content">UUID / 随机 ID 生成</div></a>
+        <a href="/tools/codec/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">编解码与加密哈希</div></a>
+        <a href="/tools/timestamp/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">时间戳与进制转换</div></a>
+        <a href="/tools/regex/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">正则表达式测试</div></a>
+        <a href="/tools/diff/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">文本 / JSON 对比</div></a>
+      </div>
+    </div>
+    <div class="mdui-divider"></div>
+  </aside>
+
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <div class="tools-breadcrumb">
+      <a href="/">首页</a><span>/</span><a href="/tools/">工具箱</a><span>/</span><span>UUID / 随机 ID 生成</span>
+    </div>
+
+    <div class="mdui-card tools-header-card">
+      <h1>⚿ UUID / 随机 ID 生成</h1>
+      <p>基于浏览器加密级随机数生成器批量生成 UUID v4、时间有序 UUID v7、ULID 与安全随机字符串。</p>
+    </div>
+
+    <div class="mdui-card tool-panel">
+      <div class="tool-toolbar">
+        <select id="idType" class="tool-select">
+          <option value="uuidv4">UUID v4 (标准随机)</option>
+          <option value="uuidv7">UUID v7 (时间有序)</option>
+          <option value="ulid">ULID (26位字典序)</option>
+          <option value="nanoid">NanoID (21位URL安全)</option>
+          <option value="hex32">32位随机 Hex</option>
+        </select>
+        <label style="font-size:13px;">数量: <input id="idCount" type="number" class="tool-input" value="10" min="1" max="500" style="width:76px;"></label>
+        <label style="font-size:13px;cursor:pointer;"><input type="checkbox" id="optUpper"> 大写</label>
+        <label style="font-size:13px;cursor:pointer;"><input type="checkbox" id="optNoDash"> 去掉横杠 (-)</label>
+        <label style="font-size:13px;cursor:pointer;"><input type="checkbox" id="optQuotes"> 加双引号</label>
+        <button class="mdui-btn mdui-btn-raised mdui-color-theme mdui-ripple" onclick="generateIds()">立即生成</button>
+        <div class="tool-toolbar-spacer"></div>
+        <button class="mdui-btn mdui-ripple" onclick="copyIds()">复制全部</button>
+        <button class="mdui-btn mdui-ripple" onclick="downloadIds()">下载 TXT</button>
+      </div>
+
+      <textarea id="uuidOutput" class="tool-textarea" spellcheck="false" readonly placeholder="生成的 ID 列表将显示在这里"></textarea>
+    </div>
+  </main>
+
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+    <div class="mdui-container"><div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div></div>
+  </footer>
+
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+
+  <script src="/js/mdui.min.js"></script>
+  <script src="/js/meadow.js"></script>
+  <script src="/js/tools-common.js"></script>
+  <script src="./js/uuid.js"></script>
+</body>
+</html>
