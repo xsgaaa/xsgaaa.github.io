@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="stylesheet" href="/css/mdui.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
+  <link rel="stylesheet" href="/css/tools.css">
+  <title>正则表达式测试 - 开发者工具箱</title>
+</head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  <header class="mdui-appbar mdui-appbar-fixed">
+    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/tools/" class="header-subtitle mdui-typo-headline">工具箱</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">工具导航</a>
+    </div>
+    <div id="sidebar-tab1" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
+        <a href="/tools/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
+        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
+        <div class="mdui-list-item mdui-ripple">
+          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
+          <div class="mdui-list-item-content">夜间模式</div>
+          <label class="mdui-switch" id="darkmode"><input type="checkbox" id="nightmode_switch"/><i class="mdui-switch-icon"></i></label>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar-tab2" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/tools/json/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON 格式化与转换</div></a>
+        <a href="/tools/excel/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel / CSV 转 JSON</div></a>
+        <a href="/tools/mermaid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Mermaid 图表渲染</div></a>
+        <a href="/tools/codec/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">编解码与加密哈希</div></a>
+        <a href="/tools/timestamp/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">时间戳与进制转换</div></a>
+        <a href="/tools/regex/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-content">正则表达式测试</div></a>
+        <a href="/tools/diff/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">文本 / JSON 对比</div></a>
+      </div>
+    </div>
+    <div class="mdui-divider"></div>
+  </aside>
+
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <div class="tools-breadcrumb">
+      <a href="/">首页</a><span>/</span><a href="/tools/">工具箱</a><span>/</span><span>正则表达式测试</span>
+    </div>
+
+    <div class="mdui-card tools-header-card">
+      <h1>.* 正则表达式测试</h1>
+      <p>实时高亮匹配结果、查看捕获分组与替换结果，内置常用正则模板。</p>
+    </div>
+
+    <div class="mdui-card tool-panel">
+      <div class="tool-toolbar">
+        <span style="font-family:monospace;font-size:16px;">/</span>
+        <input id="regexPattern" class="tool-input" style="flex:1;min-width:220px;" placeholder="输入正则表达式，例如 (\d{4})-(\d{2})-(\d{2})" value="(\d{4})-(\d{2})-(\d{2})">
+        <span style="font-family:monospace;font-size:16px;">/</span>
+        <label><input type="checkbox" class="regex-flag" value="g" checked> g</label>
+        <label><input type="checkbox" class="regex-flag" value="i"> i</label>
+        <label><input type="checkbox" class="regex-flag" value="m"> m</label>
+        <label><input type="checkbox" class="regex-flag" value="s"> s</label>
+        <label><input type="checkbox" class="regex-flag" value="u"> u</label>
+      </div>
+
+      <div class="tool-toolbar">
+        <span style="font-size:13px;opacity:.75;">常用模板:</span>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="applyPreset('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}', 'test@example.com, admin@xsgaaa.io')">邮箱</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="applyPreset('1[3-9]\\d{9}', '联系电话: 13800138000 和 18612345678')">手机号</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="applyPreset('https?://[\\w\\-]+(\\.[\\w\\-]+)+[/#?]?.*', '访问 https://github.com/xsgaaaa 或 http://localhost:4000')">URL</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="applyPreset('(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)\\.(?:25[0-5]|2[0-4]\\d|[01]?\\d\\d?)', '服务器: 192.168.1.1, 网关: 10.0.0.1')">IPv4</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="applyPreset('[\\u4e00-\\u9fa5]+', 'Hello 秘密花园 World 2026')">中文字符</button>
+      </div>
+
+      <div class="tool-split">
+        <div class="tool-pane">
+          <div class="tool-pane-header"><span>测试文本</span></div>
+          <textarea id="regexText" class="tool-textarea" style="min-height:200px;" spellcheck="false">发布日期: 2020-08-03
+更新日期: 2026-11-20</textarea>
+        </div>
+        <div class="tool-pane">
+          <div class="tool-pane-header">
+            <span>匹配高亮</span>
+            <span id="matchCount" class="tool-pane-meta">0 个匹配</span>
+          </div>
+          <div id="regexHighlight" class="regex-highlight-box" style="min-height:200px;"></div>
+        </div>
+      </div>
+
+      <div class="tool-pane" style="margin-top:16px;">
+        <div class="tool-pane-header"><span>替换测试 (可选)</span></div>
+        <div class="tool-toolbar">
+          <input id="replacePattern" class="tool-input" style="flex:1;" placeholder="替换为，支持 $1, $2 等分组引用，例如 $1/$2/$3">
+          <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="ToolsCommon.copyText(document.getElementById('replaceOutput').textContent, '替换结果')">复制替换结果</button>
+        </div>
+        <div id="replaceOutput" class="regex-highlight-box" style="min-height:72px;"></div>
+      </div>
+
+      <div class="tool-pane" style="margin-top:16px;">
+        <div class="tool-pane-header"><span>匹配详情与捕获分组</span></div>
+        <div id="matchDetails" class="tool-kv-grid"></div>
+      </div>
+
+      <div id="regexStatus" class="tool-status"></div>
+    </div>
+  </main>
+
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+    <div class="mdui-container"><div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div></div>
+  </footer>
+
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+
+  <script src="/js/mdui.min.js"></script>
+  <script src="/js/meadow.js"></script>
+  <script src="/js/tools-common.js"></script>
+  <script src="./js/regex.js"></script>
+</body>
+</html>
