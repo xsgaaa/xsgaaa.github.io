@@ -114,6 +114,7 @@ body.mdui-theme-primary-teal {
   border-left: 3px solid var(--tech-accent);
 }
 
+#sidebar .mdui-list-item-icon,
 #sidebar .mdui-list-item-icon .iconfont {
   color: inherit !important;
 }
