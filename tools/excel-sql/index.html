@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="stylesheet" href="/css/mdui.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
+  <link rel="stylesheet" href="/css/tools.css?v=3">
+  <title>Excel 转 SQL 生成器 - 开发者工具箱</title>
+  <style>
+    .sql-upload-area {
+      border: 2px dashed var(--tech-border);
+      border-radius: 10px;
+      padding: 28px 16px;
+      text-align: center;
+      background: var(--tech-code-bg);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .sql-upload-area:hover, .sql-upload-area.is-dragover {
+      border-color: var(--tech-accent);
+      background: rgba(2, 132, 199, 0.06);
+    }
+    .sql-config-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .sql-col-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.4fr repeat(4, 58px) 60px;
+      gap: 8px;
+      align-items: center;
+      padding: 8px 10px;
+      border-bottom: 1px solid var(--tech-border-subtle);
+      font-size: 13px;
+    }
+    .sql-col-header {
+      font-weight: 600;
+      color: var(--tech-accent);
+      background: var(--tech-code-bg);
+      border-radius: 6px 6px 0 0;
+    }
+    .sql-col-list {
+      border: 1px solid var(--tech-border-subtle);
+      border-radius: 8px;
+      overflow-x: auto;
+      background: var(--tech-surface-solid);
+    }
+    @media (max-width: 900px) {
+      .sql-col-row { min-width: 680px; }
+    }
+  </style>
+</head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  <header class="mdui-appbar mdui-appbar-fixed">
+    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/tools/" class="header-subtitle mdui-typo-headline">工具箱</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">工具导航</a>
+    </div>
+    <div id="sidebar-tab1" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
+        <a href="/tools/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
+        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
+        <div class="mdui-list-item mdui-ripple">
+          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
+          <div class="mdui-list-item-content">夜间模式</div>
+          <label class="mdui-switch" id="darkmode"><input type="checkbox" id="nightmode_switch"/><i class="mdui-switch-icon"></i></label>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar-tab2" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/tools/json/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON 格式化与转换</div></a>
+        <a href="/tools/jsonpath/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSONPath 定位</div></a>
+        <a href="/tools/json-java/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON ↔ Java 实体类</div></a>
+        <a href="/tools/excel/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel / CSV 转 JSON</div></a>
+        <a href="/tools/excel-sql/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-content">Excel 转 SQL 生成器</div></a>
+        <a href="/tools/mermaid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Mermaid 图表渲染</div></a>
+        <a href="/tools/svg/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">SVG 转 PNG / JPG</div></a>
+        <a href="/tools/image/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">图片压缩与转换</div></a>
+        <a href="/tools/uuid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">UUID / 随机 ID 生成</div></a>
+        <a href="/tools/snowflake/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Snowflake ID 生成器</div></a>
+        <a href="/tools/codec/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">编解码与加密哈希</div></a>
+        <a href="/tools/timestamp/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">时间戳与进制转换</div></a>
+        <a href="/tools/regex/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">正则表达式测试</div></a>
+        <a href="/tools/diff/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">文本 / JSON 对比</div></a>
+      </div>
+    </div>
+    <div class="mdui-divider"></div>
+  </aside>
+
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <div class="tools-breadcrumb">
+      <a href="/">首页</a><span>/</span><a href="/tools/">工具箱</a><span>/</span><span>Excel 转 SQL 生成器</span>
+    </div>
+
+    <div class="mdui-card tools-header-card">
+      <h1>⛁ Excel 转 SQL 生成器</h1>
+      <p>上传 .xlsx / .xls 文件，自动识别列类型并自定义字段映射，批量生成 CREATE TABLE 与 INSERT INTO SQL 语句。</p>
+    </div>
+
+    <div class="mdui-card tool-panel">
+      <div id="uploadArea" class="sql-upload-area">
+        <div style="font-size:15px;font-weight:600;color:var(--tech-text);">点击或拖拽 Excel 文件到此处</div>
+        <div class="tool-pane-meta" style="margin-top:6px;">支持 .xlsx / .xls 格式，文件大小不超过 10MB（纯本地解析，零上传）</div>
+        <input type="file" id="fileInput" accept=".xlsx,.xls" style="display:none;">
+      </div>
+
+      <div class="sql-config-grid">
+        <div class="tool-kv-item">
+          <div class="tool-kv-label">表名</div>
+          <input type="text" id="tableName" class="tool-input" value="table_name" style="width:100%;">
+        </div>
+        <div class="tool-kv-item">
+          <div class="tool-kv-label">建表/主键策略</div>
+          <select id="primaryKeyStrategy" class="tool-select" style="width:100%;">
+            <option value="none">仅生成 INSERT</option>
+            <option value="auto">生成建表 (自增主键)</option>
+            <option value="uuid">生成建表 (UUID 主键)</option>
+          </select>
+        </div>
+        <div class="tool-kv-item">
+          <div class="tool-kv-label">单条 INSERT 批量行数</div>
+          <input type="number" id="batchSize" class="tool-input" value="1000" min="1" max="10000" style="width:100%;">
+        </div>
+        <div class="tool-kv-item">
+          <div class="tool-kv-label">空值处理</div>
+          <select id="nullHandling" class="tool-select" style="width:100%;">
+            <option value="null">NULL</option>
+            <option value="empty">空字符串 ''</option>
+            <option value="default">DEFAULT</option>
+          </select>
+        </div>
+        <div class="tool-kv-item">
+          <div class="tool-kv-label">日期格式</div>
+          <select id="dateFormat" class="tool-select" style="width:100%;">
+            <option value="string">YYYY-MM-DD HH:mm:ss</option>
+            <option value="timestamp">毫秒时间戳</option>
+            <option value="custom">ISO 8601 字符串</option>
+          </select>
+        </div>
+        <div class="tool-kv-item" id="sheetBox" style="display:none;">
+          <div class="tool-kv-label">工作表 (Sheet)</div>
+          <select id="sheetSelect" class="tool-select" style="width:100%;"></select>
+        </div>
+      </div>
+
+      <div id="excelSqlStatus" class="tool-status"></div>
+
+      <div id="dataPreview" style="display:none;margin-top:18px;">
+        <div class="tool-pane-header">
+          <span>数据预览（前 20 行）</span>
+          <div>
+            <button id="autoDetectTypes" class="mdui-btn mdui-btn-dense mdui-ripple">自动检测类型</button>
+            <button id="refreshColumns" class="mdui-btn mdui-btn-dense mdui-ripple">刷新列配置</button>
+          </div>
+        </div>
+        <div class="tool-table-wrap">
+          <table class="tool-table">
+            <thead id="tableHead"></thead>
+            <tbody id="tableBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="columnConfig" style="display:none;margin-top:18px;">
+        <div class="tool-pane-header">
+          <span>列配置与字段映射</span>
+          <span class="tool-pane-meta">可修改列名、类型、默认值及是否包含</span>
+        </div>
+        <div class="sql-col-list">
+          <div class="sql-col-row sql-col-header">
+            <span>列名</span>
+            <span>类型</span>
+            <span>默认值</span>
+            <span>主键</span>
+            <span>插入</span>
+            <span>可空</span>
+            <span>自增</span>
+            <span>操作</span>
+          </div>
+          <div id="columnConfigList"></div>
+        </div>
+      </div>
+
+      <div id="generateSection" style="display:none;margin-top:16px;" class="tool-toolbar">
+        <button id="generateSql" class="mdui-btn mdui-btn-raised mdui-color-theme mdui-ripple">生成 SQL 语句</button>
+        <button id="downloadSql" class="mdui-btn mdui-btn-raised mdui-ripple">下载 SQL 文件</button>
+        <button id="copySql" class="mdui-btn mdui-ripple">复制 SQL</button>
+        <button id="previewSql" class="mdui-btn mdui-ripple">预览模式</button>
+        <button id="formatSql" class="mdui-btn mdui-ripple">格式化 SQL</button>
+        <div class="tool-toolbar-spacer"></div>
+        <span id="sqlStatsMeta" class="tool-pane-meta"></span>
+      </div>
+
+      <div id="sqlResult" style="display:none;margin-top:10px;">
+        <textarea id="sqlContent" class="tool-textarea" style="min-height:360px;" spellcheck="false" readonly></textarea>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+    <div class="mdui-container"><div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div></div>
+  </footer>
+
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+
+  <script src="/js/mdui.min.js"></script>
+  <script src="/js/meadow.js"></script>
+  <script src="/js/tools-common.js?v=3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="./js/excel-sql.js"></script>
+</body>
+</html>

@@ -59,10 +59,14 @@
       <div class="mdui-list">
         <a href="/tools/json/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON 格式化与转换</div></a>
         <a href="/tools/jsonpath/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSONPath 定位</div></a>
+        <a href="/tools/json-java/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON ↔ Java 实体类</div></a>
         <a href="/tools/excel/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel / CSV 转 JSON</div></a>
+        <a href="/tools/excel-sql/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel 转 SQL 生成器</div></a>
         <a href="/tools/mermaid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Mermaid 图表渲染</div></a>
+        <a href="/tools/svg/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">SVG 转 PNG / JPG</div></a>
         <a href="/tools/image/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">图片压缩与转换</div></a>
         <a href="/tools/uuid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">UUID / 随机 ID 生成</div></a>
+        <a href="/tools/snowflake/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Snowflake ID 生成器</div></a>
         <a href="/tools/codec/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">编解码与加密哈希</div></a>
         <a href="/tools/timestamp/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">时间戳与进制转换</div></a>
         <a href="/tools/regex/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">正则表达式测试</div></a>
@@ -75,11 +79,11 @@
   <main id="main-contain" class="mdui-container mdui-m-t-5">
     <div class="mdui-card tools-header-card">
       <h1>⚡ 开发者工具箱 // DEVTOOLS WORKBENCH</h1>
-      <p>纯前端本地运行 · 零数据上传 · 10 款高频开发工具全屏铺开，点击即用。</p>
+      <p>纯前端本地运行 · 零数据上传 · 14 款高频开发工具全屏铺开，点击即用。</p>
       <div class="tools-hub-controls">
         <input id="hubSearch" type="search" class="tools-search-input" placeholder="🔍 搜索工具名称、功能或标签（如 JSON / Excel / 图片）...">
         <div class="tools-cat-pills">
-          <button class="tools-cat-btn is-active" data-cat="all">全部 (10)</button>
+          <button class="tools-cat-btn is-active" data-cat="all">全部 (14)</button>
           <button class="tools-cat-btn" data-cat="data">JSON &amp; 数据</button>
           <button class="tools-cat-btn" data-cat="media">图表 &amp; 媒体</button>
           <button class="tools-cat-btn" data-cat="sec">编码 &amp; ID</button>
@@ -117,19 +121,46 @@
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Excel</span><span class="tool-tag">CSV / TSV</span><span class="tool-tag">双向导出</span></div>
         </a>
+
+        <a href="/tools/excel-sql/" class="mdui-card tool-hub-card" data-keywords="excel sql insert create table xlsx xls 数据库">
+          <div>
+            <div class="tool-hub-top"><div class="tool-hub-icon">⛁</div><span class="tool-hub-arrow">打开 →</span></div>
+            <h2 class="tool-hub-title">Excel 转 SQL 生成器</h2>
+            <p class="tool-hub-desc">上传 Excel 文件自动检测列类型，配置表名、主键策略与空值处理，批量生成 CREATE TABLE 与 INSERT SQL。</p>
+          </div>
+          <div class="tool-hub-tags"><span class="tool-tag">Excel</span><span class="tool-tag">INSERT SQL</span><span class="tool-tag">批量生成</span></div>
+        </a>
+
+        <a href="/tools/json-java/" class="mdui-card tool-hub-card" data-keywords="json java 实体类 pojo dto 转换">
+          <div>
+            <div class="tool-hub-top"><div class="tool-hub-icon">☕</div><span class="tool-hub-arrow">打开 →</span></div>
+            <h2 class="tool-hub-title">JSON ↔ Java 实体类</h2>
+            <p class="tool-hub-desc">JSON 与 Java POJO 实体类双向转换，自动识别嵌套对象与 List 泛型集合。</p>
+          </div>
+          <div class="tool-hub-tags"><span class="tool-tag">JSON</span><span class="tool-tag">Java POJO</span><span class="tool-tag">双向转换</span></div>
+        </a>
       </div>
     </div>
 
     <div class="tools-section" data-cat="media">
       <div class="tools-section-title">图表 &amp; 媒体处理</div>
       <div class="tools-grid">
-        <a href="/tools/mermaid/" class="mdui-card tool-hub-card" data-keywords="mermaid 流程图 时序图 甘特图 架构图 svg png">
+        <a href="/tools/mermaid/" class="mdui-card tool-hub-card" data-keywords="mermaid 流程图 时序图 甘特图 思维导图 架构图 svg png jpg">
           <div>
             <div class="tool-hub-top"><div class="tool-hub-icon">❖</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">Mermaid 图表渲染</h2>
-            <p class="tool-hub-desc">实时渲染流程图、时序图、类图、状态图、ER 图、甘特图与饼图，支持切换主题、缩放与导出 SVG / PNG。</p>
+            <p class="tool-hub-desc">实时渲染流程图、时序图、类图、状态图、ER 图、甘特图与思维导图，支持滚轮缩放平移与高清导出 SVG / PNG / JPG。</p>
           </div>
-          <div class="tool-hub-tags"><span class="tool-tag">流程图</span><span class="tool-tag">时序图</span><span class="tool-tag">SVG / PNG</span></div>
+          <div class="tool-hub-tags"><span class="tool-tag">流程图</span><span class="tool-tag">缩放平移</span><span class="tool-tag">SVG / PNG / JPG</span></div>
+        </a>
+
+        <a href="/tools/svg/" class="mdui-card tool-hub-card" data-keywords="svg png jpg 矢量图 转换 图片">
+          <div>
+            <div class="tool-hub-top"><div class="tool-hub-icon">◈</div><span class="tool-hub-arrow">打开 →</span></div>
+            <h2 class="tool-hub-title">SVG 转 PNG / JPG</h2>
+            <p class="tool-hub-desc">上传 SVG 文件或直接粘贴 SVG 代码，自定义导出尺寸、背景色、透明度与 JPG 质量，本地转换为 PNG / JPG。</p>
+          </div>
+          <div class="tool-hub-tags"><span class="tool-tag">SVG</span><span class="tool-tag">PNG / JPG</span><span class="tool-tag">尺寸定制</span></div>
         </a>
 
         <a href="/tools/image/" class="mdui-card tool-hub-card" data-keywords="图片 压缩 webp jpeg png canvas 格式转换">
@@ -153,6 +184,15 @@
             <p class="tool-hub-desc">基于加密级随机数批量生成 UUID v4、时间有序 UUID v7、ULID、NanoID 与随机 Hex，支持大小写与去横杠。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">UUID v4/v7</span><span class="tool-tag">ULID</span><span class="tool-tag">NanoID</span></div>
+        </a>
+
+        <a href="/tools/snowflake/" class="mdui-card tool-hub-card" data-keywords="snowflake 雪花算法 分布式 id 64位 32位 二进制">
+          <div>
+            <div class="tool-hub-top"><div class="tool-hub-icon">❄</div><span class="tool-hub-arrow">打开 →</span></div>
+            <h2 class="tool-hub-title">Snowflake ID 生成器</h2>
+            <p class="tool-hub-desc">基于 Twitter Snowflake 算法生成 64 位与 32 位分布式唯一 ID，支持自定义节点、批量生成与二进制位段解析。</p>
+          </div>
+          <div class="tool-hub-tags"><span class="tool-tag">雪花算法</span><span class="tool-tag">64位 / 32位</span><span class="tool-tag">位段解析</span></div>
         </a>
 
         <a href="/tools/codec/" class="mdui-card tool-hub-card" data-keywords="base64 url unicode html jwt md5 sha256 sha512 编码 哈希">
