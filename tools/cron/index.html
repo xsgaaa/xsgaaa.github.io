@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="renderer" content="webkit"/>
+  <meta name="force-rendering" content="webkit"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="stylesheet" href="/css/mdui.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
+  <link rel="stylesheet" href="/css/tools.css?v=3">
+  <title>Cron 表达式解析与生成 - 开发者工具箱</title>
+</head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  <header class="mdui-appbar mdui-appbar-fixed">
+    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/tools/" class="header-subtitle mdui-typo-headline">工具箱</a>
+      <div class="mdui-toolbar-spacer"></div>
+    </div>
+  </header>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">工具导航</a>
+    </div>
+    <div id="sidebar-tab1" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
+        <a href="/tools/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
+        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
+        <div class="mdui-list-item mdui-ripple">
+          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
+          <div class="mdui-list-item-content">夜间模式</div>
+          <label class="mdui-switch" id="darkmode"><input type="checkbox" id="nightmode_switch"/><i class="mdui-switch-icon"></i></label>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar-tab2" class="mdui-p-a-2"><div class="mdui-list"></div></div>
+    <div class="mdui-divider"></div>
+  </aside>
+
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <div class="tools-breadcrumb">
+      <a href="/">首页</a><span>/</span><a href="/tools/">工具箱</a><span>/</span><span>Cron 表达式解析与生成</span>
+    </div>
+
+    <div class="mdui-card tools-header-card">
+      <h1>⏰ Cron 表达式解析与生成</h1>
+      <p>支持标准 5 位（Linux Crontab）与 6 位（Spring / Quartz）Cron 表达式，实时计算未来 10 次触发时间。</p>
+    </div>
+
+    <div class="mdui-card tool-panel">
+      <div class="tool-toolbar">
+        <input id="cronInput" type="text" class="tool-input" style="flex:1; min-width:240px; font-family:monospace; font-size:15px;" value="0 */5 * * * ?" placeholder="输入 5 位或 6 位 Cron 表达式">
+        <button class="mdui-btn mdui-btn-raised mdui-color-theme mdui-ripple" onclick="parseCron()">计算执行时间</button>
+        <button class="mdui-btn mdui-ripple" onclick="copyCron()">复制表达式</button>
+      </div>
+
+      <div class="tool-toolbar" style="margin-top:6px;">
+        <span style="font-size:12px; color:var(--tech-text-muted);">常用预设：</span>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="setCron('*/5 * * * *')">每 5 分钟 (5位)</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="setCron('0 0 * * *')">每天 00:00 (5位)</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="setCron('0 9 * * 1-5')">工作日 09:00 (5位)</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="setCron('0 */5 * * * ?')">每 5 分钟 (Spring 6位)</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="setCron('0 30 2 * * ?')">每天 02:30 (Spring 6位)</button>
+        <button class="mdui-btn mdui-btn-dense mdui-ripple" onclick="setCron('0 0 12 1 * ?')">每月1日 12:00 (6位)</button>
+      </div>
+
+      <div id="cronFields" class="tool-meta-bar" style="margin:12px 0;"></div>
+      <div class="tool-pane-header" style="margin-bottom:8px;">
+        <span>未来 10 次预计执行时间</span>
+      </div>
+      <ul id="cronNextList" class="cron-next-list"></ul>
+      <div id="cronStatus" class="tool-status"></div>
+    </div>
+  </main>
+
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+    <div class="mdui-container"><div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div></div>
+  </footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+
+  <script src="/js/mdui.min.js"></script>
+  <script src="/js/meadow.js"></script>
+  <script src="/js/tools-common.js?v=4"></script>
+  <script src="./js/cron.js"></script>
+</body>
+</html>

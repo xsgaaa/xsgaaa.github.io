@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>leetcode</title>
+    <url>/2020/08/03/leetcode/</url>
+    <content><![CDATA[LeetCode 刷题笔记与算法练习记录。]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/08/03/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info.]]></content>
+  </entry>
+  <entry>
+    <title>开发者工具箱总览 (18款)</title>
+    <url>/tools/</url>
+    <content><![CDATA[纯前端本地运行 零数据上传 JSON Java POJO SQL MyBatis Excel Mermaid SVG 图片压缩 颜色转换 UUID Snowflake JWT 编解码 时间戳 Cron 正则 文本对比]]></content>
+  </entry>
+  <entry>
+    <title>JSON 格式化与转换</title>
+    <url>/tools/json/</url>
+    <content><![CDATA[JSON 校验 缩进格式化 压缩 转义 反转义 Key 排序 树形视图 TypeScript Go Struct URL 参数]]></content>
+  </entry>
+  <entry>
+    <title>JSONPath 定位</title>
+    <url>/tools/jsonpath/</url>
+    <content><![CDATA[JSONPath 实时提取 路径定位 递归查找 条件过滤]]></content>
+  </entry>
+  <entry>
+    <title>JSON ↔ Java 实体类</title>
+    <url>/tools/json-java/</url>
+    <content><![CDATA[JSON Java POJO DTO 实体类双向转换 嵌套对象 List 泛型]]></content>
+  </entry>
+  <entry>
+    <title>Excel / CSV 转 JSON</title>
+    <url>/tools/excel/</url>
+    <content><![CDATA[Excel CSV TSV xlsx xls 转 JSON 多 Sheet 表格预览 双向导出]]></content>
+  </entry>
+  <entry>
+    <title>Excel 转 SQL 生成器</title>
+    <url>/tools/excel-sql/</url>
+    <content><![CDATA[Excel 转 CREATE TABLE INSERT SQL 批量生成]]></content>
+  </entry>
+  <entry>
+    <title>SQL 格式化 &amp; MyBatis 日志还原</title>
+    <url>/tools/sql/</url>
+    <content><![CDATA[SQL 美化 压缩 MyBatis Preparing Parameters 日志还原 可执行 SQL]]></content>
+  </entry>
+  <entry>
+    <title>Mermaid 图表渲染</title>
+    <url>/tools/mermaid/</url>
+    <content><![CDATA[Mermaid 流程图 时序图 类图 状态图 ER图 甘特图 思维导图 SVG PNG JPG]]></content>
+  </entry>
+  <entry>
+    <title>SVG 转 PNG / JPG</title>
+    <url>/tools/svg/</url>
+    <content><![CDATA[SVG 转 PNG JPG 矢量图 尺寸定制 背景色]]></content>
+  </entry>
+  <entry>
+    <title>图片压缩与转换</title>
+    <url>/tools/image/</url>
+    <content><![CDATA[图片压缩 Canvas WebP JPEG PNG 质量滑块 尺寸限制]]></content>
+  </entry>
+  <entry>
+    <title>颜色转换与 WCAG 对比度检查</title>
+    <url>/tools/color/</url>
+    <content><![CDATA[HEX RGB HSL 颜色转换 取色器 WCAG AA AAA 对比度]]></content>
+  </entry>
+  <entry>
+    <title>UUID / 随机 ID 生成</title>
+    <url>/tools/uuid/</url>
+    <content><![CDATA[UUID v4 UUID v7 ULID NanoID Hex 随机字符串]]></content>
+  </entry>
+  <entry>
+    <title>Snowflake ID 生成器</title>
+    <url>/tools/snowflake/</url>
+    <content><![CDATA[Snowflake 雪花算法 分布式 ID 64位 32位 位段解析]]></content>
+  </entry>
+  <entry>
+    <title>JWT Token 解析器</title>
+    <url>/tools/jwt/</url>
+    <content><![CDATA[JWT Token 解析 Header Payload exp iat nbf 过期检测]]></content>
+  </entry>
+  <entry>
+    <title>编解码与加密哈希</title>
+    <url>/tools/codec/</url>
+    <content><![CDATA[Base64 URL Unicode HTML 实体 MD5 SHA-1 SHA-256 SHA-512]]></content>
+  </entry>
+  <entry>
+    <title>时间戳与进制转换</title>
+    <url>/tools/timestamp/</url>
+    <content><![CDATA[Unix 时间戳 秒 毫秒 ISO 8601 二进制 八进制 十六进制]]></content>
+  </entry>
+  <entry>
+    <title>Cron 表达式解析与生成</title>
+    <url>/tools/cron/</url>
+    <content><![CDATA[Cron 表达式 Linux 5位 Spring Quartz 6位 未来执行时间]]></content>
+  </entry>
+  <entry>
+    <title>正则表达式测试</title>
+    <url>/tools/regex/</url>
+    <content><![CDATA[Regex 正则表达式 实时高亮 捕获分组 替换 常用模板]]></content>
+  </entry>
+  <entry>
+    <title>文本 / JSON 对比</title>
+    <url>/tools/diff/</url>
+    <content><![CDATA[Diff 文本对比 JSON 对比 增删差异]]></content>
+  </entry>
+</search>

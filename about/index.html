@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <link rel="shortcut icon" href="/icons/favicon.ico">
+  <link rel="stylesheet" href="/css/mdui.min.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/iconfont.css">
+  <link rel="stylesheet" href="/css/tools.css?v=3">
+  <title>关于 - 秘密花园</title>
+</head>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
+  <header class="mdui-appbar mdui-appbar-fixed">
+    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
+      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
+      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/about/" class="header-subtitle mdui-typo-headline">关于我</a>
+      <div class="mdui-toolbar-spacer"></div>
+      <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
+    </div>
+  </header>
+
+  <div class="mdui-dialog" id="search">
+    <div class="search-form"><input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()"></div>
+    <div class="search-result" data-resource="/search.xml"></div>
+  </div>
+
+  <aside id="sidebar" class="mdui-drawer">
+    <div class="mdui-tab" mdui-tab>
+      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
+      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">全部工具</a>
+    </div>
+    <div id="sidebar-tab1" class="mdui-p-a-2">
+      <div class="mdui-list">
+        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
+        <a href="/tags/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-bookmark"></i></div><div class="mdui-list-item-content">标签</div></a>
+        <a href="/categories/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-folder"></i></div><div class="mdui-list-item-content">分类</div></a>
+        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
+        <a href="/tools/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
+        <a href="/about/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-user"></i></div><div class="mdui-list-item-content">关于</div></a>
+        <div class="mdui-list-item mdui-ripple">
+          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
+          <div class="mdui-list-item-content">夜间模式</div>
+          <label class="mdui-switch" id="darkmode"><input type="checkbox" id="nightmode_switch"/><i class="mdui-switch-icon"></i></label>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar-tab2" class="mdui-p-a-2"><div class="mdui-list"></div></div>
+    <div class="mdui-divider"></div>
+  </aside>
+
+  <main id="main-contain" class="mdui-container mdui-m-t-5">
+    <div class="mdui-card tools-header-card">
+      <h1>👤 关于 秘密花园 // xsgaaaa</h1>
+      <p>个人技术笔记与纯前端开发者工具工作台，所有工具均在浏览器本地安全运行。</p>
+    </div>
+
+    <div class="mdui-card tool-panel mdui-typo" style="padding:24px;">
+      <div style="display:flex; align-items:center; gap:18px; flex-wrap:wrap; margin-bottom:18px;">
+        <img src="/icons/avatar.gif" alt="xsgaaaa" style="width:76px; height:76px; border-radius:50%; border:2px solid var(--tech-border);">
+        <div>
+          <h2 style="margin:0 0 6px;">xsgaaaa</h2>
+          <p style="margin:0; color:var(--tech-text-muted);">开发者 · 热爱效率工具、后端架构与算法折腾</p>
+        </div>
+      </div>
+
+      <h3>站点特点</h3>
+      <ul>
+        <li><strong>纯前端隐私安全</strong>：<a href="/tools/">工具箱</a> 内所有 18 款工具（JSON / Java POJO / SQL &amp; MyBatis / JWT / Cron / Excel / Mermaid / SVG / 图片压缩等）均完全在浏览器本地执行，零后端上传。</li>
+        <li><strong>快捷操作</strong>：全站支持 <kbd class="cmd-kbd">Ctrl + K</kbd> 快速搜索并跳转工具或页面，支持深浅色模式切换与 PWA 离线缓存。</li>
+      </ul>
+
+      <h3>联系方式</h3>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+        <a class="mdui-btn mdui-btn-raised mdui-ripple" href="mailto:shouguang01@gmail.com">E-Mail</a>
+        <a class="mdui-btn mdui-btn-raised mdui-ripple" target="_blank" rel="noopener" href="https://github.com/xsgaaaa">GitHub</a>
+        <a class="mdui-btn mdui-btn-raised mdui-ripple" href="/2310765926">复制 QQ (2310765926)</a>
+        <a class="mdui-btn mdui-btn-raised mdui-ripple" target="_blank" rel="noopener" href="https://weibo.com/u/5281995602">Weibo</a>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
+    <div class="mdui-container"><div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div></div>
+  </footer>
+  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
+
+  <script src="/js/mdui.min.js"></script>
+  <script src="/js/meadow.js"></script>
+  <script src="/js/tools-common.js?v=4"></script>
+</body>
+</html>

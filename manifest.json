@@ -1,0 +1,21 @@
+{
+  "name": "秘密花园 - 开发者工具箱 & 博客",
+  "short_name": "秘密花园",
+  "start_url": "/tools/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#0284c7",
+  "description": "xsgaaaa 的个人技术博客与纯前端本地开发者工具箱",
+  "icons": [
+    {
+      "src": "/icons/avatar.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
