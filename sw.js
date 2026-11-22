@@ -1,14 +1,14 @@
-var CACHE_NAME = 'xsgaaa-blog-tools-v1';
+var CACHE_NAME = 'xsgaaa-blog-tools-v2';
 var CORE_ASSETS = [
   '/',
   '/tools/',
   '/css/mdui.min.css',
   '/css/main.css',
   '/css/iconfont.css',
-  '/css/tools.css?v=3',
+  '/css/tools.css?v=5',
   '/js/mdui.min.js',
   '/js/meadow.js',
-  '/js/tools-common.js?v=4',
+  '/js/tools-common.js?v=5',
   '/tools/js/hub.js',
   '/manifest.json'
 ];
