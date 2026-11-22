@@ -18,6 +18,7 @@
     { slug: 'codec', icon: '#', name: '编解码/哈希', fullName: '编解码与加密哈希', keywords: 'base64 url unicode sha256 sha512 md5 编码 解码 哈希' },
     { slug: 'timestamp', icon: '⏱', name: '时间戳/进制', fullName: '时间戳与进制转换', keywords: 'timestamp 时间戳 日期 进制 二进制 十六进制' },
     { slug: 'cron', icon: '⏰', name: 'Cron 表达式', fullName: 'Cron 表达式解析与生成', keywords: 'cron 定时任务 quartz spring 执行时间' },
+    { slug: 'calc', icon: '🧮', name: '科学计算器', fullName: '科学计算器', keywords: 'calc calculator 计算器 科学计算 三角函数 对数 阶乘' },
     { slug: 'regex', icon: '.*', name: '正则测试', fullName: '正则表达式测试', keywords: 'regex 正则 匹配 替换 提取' },
     { slug: 'diff', icon: '±', name: '文本对比', fullName: '文本 / JSON 对比', keywords: 'diff 对比 差异 文本 json' }
   ];

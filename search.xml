@@ -96,6 +96,11 @@
     <content><![CDATA[Cron 表达式 Linux 5位 Spring Quartz 6位 未来执行时间]]></content>
   </entry>
   <entry>
+    <title>科学计算器</title>
+    <url>/tools/calc/</url>
+    <content><![CDATA[科学计算器 三角函数 对数 阶乘 幂运算 DEG RAD 历史记录]]></content>
+  </entry>
+  <entry>
     <title>正则表达式测试</title>
     <url>/tools/regex/</url>
     <content><![CDATA[Regex 正则表达式 实时高亮 捕获分组 替换 常用模板]]></content>

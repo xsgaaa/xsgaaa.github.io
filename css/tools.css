@@ -923,3 +923,86 @@ body.mdui-theme-layout-dark .tool-table th { background: #0f172a; }
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 13px;
 }
+
+/* Scientific Calculator */
+.calc-display {
+  padding: 16px 18px;
+  border-radius: 12px;
+  background: var(--tech-code-bg);
+  border: 1px solid var(--tech-border);
+  margin-bottom: 14px;
+  text-align: right;
+}
+.calc-expr-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--tech-text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 16px;
+  text-align: right;
+}
+.calc-result-val {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--tech-accent);
+  word-break: break-all;
+  margin-top: 6px;
+  min-height: 38px;
+}
+.calc-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+.calc-btn {
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid var(--tech-border-subtle);
+  background: var(--tech-surface-solid);
+  color: var(--tech-text);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.calc-btn:hover {
+  border-color: var(--tech-accent);
+  color: var(--tech-accent);
+}
+.calc-btn.is-op {
+  background: var(--tech-code-bg);
+  color: var(--tech-accent);
+}
+.calc-btn.is-eq {
+  background: var(--tech-accent);
+  color: #ffffff;
+  border-color: var(--tech-accent);
+}
+.calc-btn.is-eq:hover {
+  opacity: 0.92;
+  color: #ffffff;
+}
+.calc-history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 360px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.calc-history-item {
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--tech-code-bg);
+  border: 1px solid var(--tech-border-subtle);
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.calc-history-item:hover {
+  border-color: var(--tech-accent);
+}
