@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="renderer" content="webkit"/>
   <meta name="force-rendering" content="webkit"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -13,14 +13,15 @@
   <link rel="stylesheet" href="/css/mdui.min.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/iconfont.css">
-  <link rel="stylesheet" href="/css/tools.css?v=5">
-  <title>秘密花园 - xsgaaaa</title>
+  <link rel="stylesheet" href="/css/tools.css?v=12">
+  <meta name="description" content="技术博客与纯前端开发者工具工作台，所有工具均在浏览器本地安全运行。">
+  <title>xsgaaaa 的工作台</title>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div id="toolbar" class="mdui-toolbar mdui-color-theme">
       <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
-      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/" class="mdui-typo-headline">xsgaaaa 的工作台</a>
       <a href="/tools/" class="header-subtitle mdui-typo-headline">DEVTOOLS // 主页</a>
       <div class="mdui-toolbar-spacer"></div>
       <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
@@ -106,15 +107,23 @@
   </aside>
 
   <main id="main-contain" class="mdui-container mdui-m-t-5">
-    <div class="mdui-card tools-header-card">
-      <h1>⚡ 秘密花园 // DEVTOOLS &amp; BLOG</h1>
-      <p>技术博客与纯前端开发者工具工作台，所有工具均在浏览器本地安全运行。</p>
-    </div>
+    <header class="tools-header-card">
+      <div class="page-head-glyph" aria-hidden="true">⌂</div>
+      <div class="page-head-text">
+        <h1>xsgaaaa 的工作台 // DEVTOOLS &amp; BLOG</h1>
+        <p>技术博客与纯前端开发者工具工作台，所有工具均在浏览器本地安全运行。</p>
+      </div>
+    </header>
 
-    <div class="tools-section-title">常用开发工具直达</div>
-    <nav class="tools-nav-strip" aria-label="开发工具快捷导航">
-      <a href="/tools/" class="tools-nav-pill">☷ 全部工具 (18)</a>
-    </nav>
+    <div class="tools-section-title">开发者工具箱</div>
+    <a class="tools-entry-cta" href="/tools/">
+      <span class="tools-entry-icon" aria-hidden="true">☷</span>
+      <span class="tools-entry-body">
+        <span class="tools-entry-title">全部 19 款本地工具</span>
+        <span class="tools-entry-desc">JSON / SQL / JWT / Cron / 计算器 等，纯前端运行，数据不上传</span>
+      </span>
+      <span class="tools-entry-arrow" aria-hidden="true">→</span>
+    </a>
 
     <div class="tools-section-title">最新文章</div>
 
@@ -171,6 +180,6 @@
 
   <script src="/js/mdui.min.js"></script>
   <script src="/js/meadow.js"></script>
-  <script src="/js/tools-common.js?v=5"></script>
+  <script src="/js/tools-common.js?v=12"></script>
 </body>
 </html>

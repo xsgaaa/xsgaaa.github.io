@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="renderer" content="webkit"/>
   <meta name="force-rendering" content="webkit"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -11,49 +11,25 @@
   <link rel="stylesheet" href="/css/mdui.min.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/iconfont.css">
-  <link rel="stylesheet" href="/css/tools.css?v=5">
+  <link rel="stylesheet" href="/css/tools.css?v=12">
+  <meta name="description" content="支持 HEX / RGB / HSL 实时互转、取色器同步，以及前景色与背景色的 WCAG 2.1 可访问性对比度计算。">
   <title>颜色转换与对比度检查 - 开发者工具箱</title>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
-  <header class="mdui-appbar mdui-appbar-fixed">
-    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
-      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
-      <a href="/" class="mdui-typo-headline">秘密花园</a>
-      <a href="/tools/" class="header-subtitle mdui-typo-headline">工具箱</a>
-      <div class="mdui-toolbar-spacer"></div>
-    </div>
-  </header>
+  <a class="t-skip-link" href="#main-contain">跳到主内容</a>
 
-  <aside id="sidebar" class="mdui-drawer">
-    <div class="mdui-tab" mdui-tab>
-      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
-      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">工具导航</a>
-    </div>
-    <div id="sidebar-tab1" class="mdui-p-a-2">
-      <div class="mdui-list">
-        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
-        <a href="/tools/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
-        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
-        <div class="mdui-list-item mdui-ripple">
-          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
-          <div class="mdui-list-item-content">夜间模式</div>
-          <label class="mdui-switch" id="darkmode"><input type="checkbox" id="nightmode_switch"/><i class="mdui-switch-icon"></i></label>
-        </div>
-      </div>
-    </div>
-    <div id="sidebar-tab2" class="mdui-p-a-2"><div class="mdui-list"></div></div>
-    <div class="mdui-divider"></div>
-  </aside>
-
-  <main id="main-contain" class="mdui-container mdui-m-t-5">
+  <main id="main-contain" class="mdui-container" data-shell="tools">
     <div class="tools-breadcrumb">
-      <a href="/">首页</a><span>/</span><a href="/tools/">工具箱</a><span>/</span><span>颜色转换与对比度</span>
+      <a href="/">首页</a><span>/</span><a href="/tools/">工具箱</a><span>/</span><span aria-current="page">颜色转换与对比度</span>
     </div>
 
-    <div class="mdui-card tools-header-card">
-      <h1>◐ 颜色转换与 WCAG 对比度检查</h1>
-      <p>支持 HEX / RGB / HSL 实时互转、取色器同步，以及前景色与背景色的 WCAG 2.1 可访问性对比度计算。</p>
-    </div>
+    <header class="tools-header-card">
+      <div class="page-head-glyph" aria-hidden="true">◐</div>
+      <div class="page-head-text">
+        <h1>颜色转换与 WCAG 对比度检查</h1>
+        <p>支持 HEX / RGB / HSL 实时互转、取色器同步，以及前景色与背景色的 WCAG 2.1 可访问性对比度计算。</p>
+      </div>
+    </header>
 
     <div class="mdui-card tool-panel">
       <div class="tool-split">
@@ -100,14 +76,9 @@
     </div>
   </main>
 
-  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
-    <div class="mdui-container"><div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div></div>
-  </footer>
-  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
-
   <script src="/js/mdui.min.js"></script>
   <script src="/js/meadow.js"></script>
-  <script src="/js/tools-common.js?v=5"></script>
+  <script src="/js/tools-common.js?v=12"></script>
   <script src="./js/color.js"></script>
 </body>
 </html>

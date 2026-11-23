@@ -255,7 +255,7 @@
 
   window.loadSample = function () {
     inputEl.value = JSON.stringify({
-      site: '秘密花园',
+      site: 'xsgaaaa 的工作台',
       author: 'xsgaaaa',
       active: true,
       version: 2,

@@ -34,7 +34,51 @@
   };
 
   if (document.body.classList.contains('mdui-theme-layout-dark')) {
-    themeSel.value = 'dark';
+    themeSel.value = 'site';
+  }
+
+  /** 站点主题：跟随纸墨色阶，避免默认紫色与整站风格冲突 */
+  function siteThemeVariables() {
+    var dark = document.body.classList.contains('mdui-theme-layout-dark');
+    if (dark) {
+      return {
+        fontFamily: '-apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif',
+        fontSize: '14px',
+        primaryColor: '#242422',
+        primaryTextColor: '#e9e7e1',
+        primaryBorderColor: '#4a4a43',
+        secondaryColor: '#1e1e1c',
+        tertiaryColor: '#191918',
+        lineColor: '#a5a39b',
+        edgeLabelBackground: '#191918',
+        clusterBkg: '#1e1e1c',
+        clusterBorder: '#2d2d2a',
+        titleColor: '#e9e7e1',
+        noteBkgColor: '#151514',
+        noteBorderColor: '#2d2d2a'
+      };
+    }
+    return {
+      fontFamily: '-apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif',
+      fontSize: '14px',
+      primaryColor: '#f1f0ec',
+      primaryTextColor: '#1b1b19',
+      primaryBorderColor: '#c4c1b8',
+      secondaryColor: '#faf9f7',
+      tertiaryColor: '#ffffff',
+      lineColor: '#82827a',
+      edgeLabelBackground: '#ffffff',
+      clusterBkg: '#faf9f7',
+      clusterBorder: '#e0ded8',
+      titleColor: '#1b1b19',
+      noteBkgColor: '#f7f6f3',
+      noteBorderColor: '#e0ded8'
+    };
+  }
+
+  function isDarkDiagram() {
+    return themeSel.value === 'dark' ||
+      (themeSel.value === 'site' && document.body.classList.contains('mdui-theme-layout-dark'));
   }
 
   function updateTransform() {
@@ -126,12 +170,17 @@
       return;
     }
     try {
-      mermaid.initialize({
+      var mermaidConfig = {
         startOnLoad: false,
         theme: themeSel.value,
         securityLevel: 'loose',
         flowchart: { htmlLabels: false }
-      });
+      };
+      if (themeSel.value === 'site') {
+        mermaidConfig.theme = 'base';
+        mermaidConfig.themeVariables = siteThemeVariables();
+      }
+      mermaid.initialize(mermaidConfig);
       var id = 'mermaid-svg-' + (++renderSeq);
       var res = await mermaid.render(id, code);
       previewEl.innerHTML = res.svg;
@@ -198,8 +247,8 @@
         canvas.width = canvasW;
         canvas.height = canvasH;
         var ctx = canvas.getContext('2d');
-        if (format === 'jpg' || themeSel.value === 'dark') {
-          ctx.fillStyle = themeSel.value === 'dark' ? '#1e1e1e' : '#ffffff';
+        if (format === 'jpg' || isDarkDiagram()) {
+          ctx.fillStyle = isDarkDiagram() ? '#191918' : '#ffffff';
           ctx.fillRect(0, 0, canvasW, canvasH);
         }
         ctx.drawImage(img, 0, 0, canvasW, canvasH);

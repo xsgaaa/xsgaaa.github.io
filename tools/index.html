@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="renderer" content="webkit"/>
   <meta name="force-rendering" content="webkit"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
@@ -11,295 +11,235 @@
   <link rel="stylesheet" href="/css/mdui.min.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/iconfont.css">
-  <link rel="stylesheet" href="/css/tools.css?v=5">
-  <title>开发者工具箱 - 秘密花园</title>
+  <link rel="stylesheet" href="/css/tools.css?v=12">
+  <meta name="description" content="纯前端本地运行 · 零数据上传 · 19 款高频开发工具，支持 Ctrl K 快捷跳转与收藏置顶。">
+  <title>开发者工具箱 - xsgaaaa 的工作台</title>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
-  <header class="mdui-appbar mdui-appbar-fixed">
-    <div id="toolbar" class="mdui-toolbar mdui-color-theme">
-      <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
-      <a href="/" class="mdui-typo-headline">秘密花园</a>
-      <a href="/tools/" class="header-subtitle mdui-typo-headline">DEVTOOLS // 工作台</a>
-      <div class="mdui-toolbar-spacer"></div>
-      <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
-    </div>
-  </header>
+  <a class="t-skip-link" href="#main-contain">跳到主内容</a>
 
-  <div class="mdui-dialog" id="search">
-    <div class="search-form">
-      <input type="search" class="search-form-input" placeholder="请输入关键字" onfocus="listenSearchFunc()">
-    </div>
-    <div class="search-result" data-resource="/search.xml"></div>
-  </div>
-
-  <aside id="sidebar" class="mdui-drawer">
-    <div class="mdui-tab" mdui-tab>
-      <a href="#sidebar-tab1" id="sidebartab" class="mdui-ripple mdui-tab-active">站点概览</a>
-      <a href="#sidebar-tab2" id="sidebartab" class="mdui-ripple">全部工具</a>
-    </div>
-    <div id="sidebar-tab1" class="mdui-p-a-2">
-      <div class="mdui-list">
-        <a href="/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-home"></i></div><div class="mdui-list-item-content">主页</div></a>
-        <a href="/tags/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-bookmark"></i></div><div class="mdui-list-item-content">标签</div></a>
-        <a href="/categories/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-folder"></i></div><div class="mdui-list-item-content">分类</div></a>
-        <a href="/archives/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-archive"></i></div><div class="mdui-list-item-content">归档</div></a>
-        <a href="/tools/" class="mdui-list-item mdui-ripple mdui-list-item-active"><div class="mdui-list-item-icon"><i class="iconfont icon-tools"></i></div><div class="mdui-list-item-content">工具箱</div></a>
-        <a href="/about/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-icon"><i class="iconfont icon-user"></i></div><div class="mdui-list-item-content">关于</div></a>
-        <div class="mdui-list-item mdui-ripple">
-          <div class="mdui-list-item-icon"><i class="iconfont icon-moon"></i></div>
-          <div class="mdui-list-item-content">夜间模式</div>
-          <label class="mdui-switch" id="darkmode">
-            <input type="checkbox" id="nightmode_switch"/>
-            <i class="mdui-switch-icon"></i>
-          </label>
+  <main id="main-contain" class="mdui-container" data-shell="tools">
+    <header class="tools-header-card is-hub">
+      <div class="tools-header-top">
+        <div class="page-head-glyph" aria-hidden="true">☷</div>
+        <div class="page-head-text">
+          <h1>开发者工具箱</h1>
+          <p>纯前端本地运行 · 零数据上传 · 19 款高频开发工具，支持 <kbd>Ctrl K</kbd> 快捷跳转与收藏置顶。</p>
         </div>
       </div>
-    </div>
-    <div id="sidebar-tab2" class="mdui-p-a-2">
-      <div class="mdui-list">
-        <a href="/tools/json/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON 格式化与转换</div></a>
-        <a href="/tools/jsonpath/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSONPath 定位</div></a>
-        <a href="/tools/json-java/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">JSON ↔ Java 实体类</div></a>
-        <a href="/tools/excel/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel / CSV 转 JSON</div></a>
-        <a href="/tools/excel-sql/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Excel 转 SQL 生成器</div></a>
-        <a href="/tools/mermaid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Mermaid 图表渲染</div></a>
-        <a href="/tools/svg/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">SVG 转 PNG / JPG</div></a>
-        <a href="/tools/image/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">图片压缩与转换</div></a>
-        <a href="/tools/uuid/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">UUID / 随机 ID 生成</div></a>
-        <a href="/tools/snowflake/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Snowflake ID 生成器</div></a>
-        <a href="/tools/codec/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">编解码与加密哈希</div></a>
-        <a href="/tools/timestamp/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">时间戳与进制转换</div></a>
-        <a href="/tools/regex/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">正则表达式测试</div></a>
-        <a href="/tools/diff/" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">文本 / JSON 对比</div></a>
-      </div>
-    </div>
-    <div class="mdui-divider"></div>
-  </aside>
-
-  <main id="main-contain" class="mdui-container mdui-m-t-5">
-    <div class="mdui-card tools-header-card">
-      <h1>⚡ 开发者工具箱 // DEVTOOLS WORKBENCH</h1>
-      <p>纯前端本地运行 · 零数据上传 · 19 款高频开发工具全屏铺开，支持 <kbd class="cmd-kbd">Ctrl+K</kbd> 快捷跳转与收藏置顶。</p>
       <div class="tools-hub-controls">
-        <input id="hubSearch" type="search" class="tools-search-input" placeholder="🔍 搜索工具名称、功能或标签（如 JSON / SQL / JWT / Cron）...">
-        <div class="tools-cat-pills">
-          <button class="tools-cat-btn is-active" data-cat="all">全部 (19)</button>
-          <button class="tools-cat-btn" data-cat="data">JSON &amp; 数据</button>
-          <button class="tools-cat-btn" data-cat="media">图表 &amp; 媒体</button>
-          <button class="tools-cat-btn" data-cat="sec">编码 &amp; ID</button>
-          <button class="tools-cat-btn" data-cat="util">效率 &amp; 对比</button>
+        <input id="hubSearch" type="search" class="tools-search-input" aria-label="搜索工具"
+               placeholder="搜索工具名称、功能或标签（如 JSON / SQL / JWT / Cron）…">
+        <div class="tools-cat-pills" role="group" aria-label="按分类筛选">
+          <button type="button" class="tools-cat-btn is-active" data-cat="all">全部 19</button>
+          <button type="button" class="tools-cat-btn" data-cat="data">JSON &amp; 数据</button>
+          <button type="button" class="tools-cat-btn" data-cat="media">图表 &amp; 媒体</button>
+          <button type="button" class="tools-cat-btn" data-cat="sec">编码 &amp; ID</button>
+          <button type="button" class="tools-cat-btn" data-cat="util">效率 &amp; 对比</button>
         </div>
       </div>
-    </div>
+    </header>
 
-    <div id="hubPinnedSection" style="display:none; margin-bottom: 24px;">
+    <section id="hubPinnedSection" style="display:none" aria-label="收藏与最近使用">
       <div class="tools-section-title">★ 收藏与最近使用</div>
       <div id="hubPinnedGrid" class="tools-grid"></div>
-    </div>
+    </section>
 
-    <div class="tools-section" data-cat="data">
-      <div class="tools-section-title">JSON &amp; 数据处理</div>
+    <section class="tools-section" data-cat="data" aria-labelledby="sec-data">
+      <div class="tools-section-title" id="sec-data">JSON &amp; 数据处理</div>
       <div class="tools-grid">
-        <a href="/tools/json/" class="mdui-card tool-hub-card" data-keywords="json 格式化 压缩 转义 typescript go struct url">
+        <a href="/tools/json/" class="tool-hub-card" data-keywords="json 格式化 压缩 转义 typescript go struct url">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">{ }</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">{ }</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">JSON 格式化与转换</h2>
             <p class="tool-hub-desc">校验、缩进格式化、压缩、转义/反转义、Key 排序、树形折叠预览，以及转 TypeScript / Go Struct / URL 参数。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">格式化</span><span class="tool-tag">树形视图</span><span class="tool-tag">TS / Go</span></div>
         </a>
 
-        <a href="/tools/jsonpath/" class="mdui-card tool-hub-card" data-keywords="jsonpath 定位 查询 过滤 路径">
+        <a href="/tools/jsonpath/" class="tool-hub-card" data-keywords="jsonpath 定位 查询 过滤 路径">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⌖</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">⌖</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">JSONPath 定位</h2>
             <p class="tool-hub-desc">实时通过 JSONPath 提取 JSON 数据并查看精确命中路径，支持递归查找 (..)、切片、通配符与条件过滤。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">JSONPath</span><span class="tool-tag">路径定位</span><span class="tool-tag">条件过滤</span></div>
         </a>
 
-        <a href="/tools/excel/" class="mdui-card tool-hub-card" data-keywords="excel csv tsv xlsx xls json 表格">
+        <a href="/tools/excel/" class="tool-hub-card" data-keywords="excel csv tsv xlsx xls json 表格">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⊞</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">⊞</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">Excel / CSV 转 JSON</h2>
             <p class="tool-hub-desc">上传 .xlsx / .xls / .csv 或直接粘贴表格数据转为 JSON，支持多 Sheet 切换、表格预览与 JSON 导出 Excel。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Excel</span><span class="tool-tag">CSV / TSV</span><span class="tool-tag">双向导出</span></div>
         </a>
 
-        <a href="/tools/excel-sql/" class="mdui-card tool-hub-card" data-keywords="excel sql insert create table xlsx xls 数据库">
+        <a href="/tools/excel-sql/" class="tool-hub-card" data-keywords="excel sql insert create table xlsx xls 数据库">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⛁</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">X/DB</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">Excel 转 SQL 生成器</h2>
             <p class="tool-hub-desc">上传 Excel 文件自动检测列类型，配置表名、主键策略与空值处理，批量生成 CREATE TABLE 与 INSERT SQL。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Excel</span><span class="tool-tag">INSERT SQL</span><span class="tool-tag">批量生成</span></div>
         </a>
 
-        <a href="/tools/json-java/" class="mdui-card tool-hub-card" data-keywords="json java 实体类 pojo dto 转换">
+        <a href="/tools/json-java/" class="tool-hub-card" data-keywords="json java 实体类 pojo dto 转换">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">☕</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">POJO</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">JSON ↔ Java 实体类</h2>
             <p class="tool-hub-desc">JSON 与 Java POJO 实体类双向转换，自动识别嵌套对象与 List 泛型集合。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">JSON</span><span class="tool-tag">Java POJO</span><span class="tool-tag">双向转换</span></div>
         </a>
 
-        <a href="/tools/sql/" class="mdui-card tool-hub-card" data-keywords="sql 格式化 压缩 mybatis preparing parameters 日志还原">
+        <a href="/tools/sql/" class="tool-hub-card" data-keywords="sql 格式化 压缩 mybatis preparing parameters 日志还原">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⌘</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">SQL</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">SQL 格式化 &amp; MyBatis 还原</h2>
             <p class="tool-hub-desc">支持 SQL 美化缩进与压缩，以及一键将 MyBatis Preparing + Parameters 日志还原为可执行 SQL。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">SQL 美化</span><span class="tool-tag">MyBatis</span><span class="tool-tag">日志还原</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="tools-section" data-cat="media">
-      <div class="tools-section-title">图表 &amp; 媒体处理</div>
+    <section class="tools-section" data-cat="media" aria-labelledby="sec-media">
+      <div class="tools-section-title" id="sec-media">图表 &amp; 媒体处理</div>
       <div class="tools-grid">
-        <a href="/tools/mermaid/" class="mdui-card tool-hub-card" data-keywords="mermaid 流程图 时序图 甘特图 思维导图 架构图 svg png jpg">
+        <a href="/tools/mermaid/" class="tool-hub-card" data-keywords="mermaid 流程图 时序图 甘特图 思维导图 架构图 svg png jpg">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">❖</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">❖</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">Mermaid 图表渲染</h2>
             <p class="tool-hub-desc">实时渲染流程图、时序图、类图、状态图、ER 图、甘特图与思维导图，支持滚轮缩放平移与高清导出 SVG / PNG / JPG。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">流程图</span><span class="tool-tag">缩放平移</span><span class="tool-tag">SVG / PNG / JPG</span></div>
         </a>
 
-        <a href="/tools/svg/" class="mdui-card tool-hub-card" data-keywords="svg png jpg 矢量图 转换 图片">
+        <a href="/tools/svg/" class="tool-hub-card" data-keywords="svg png jpg 矢量图 转换 图片">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">◈</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">◈</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">SVG 转 PNG / JPG</h2>
             <p class="tool-hub-desc">上传 SVG 文件或直接粘贴 SVG 代码，自定义导出尺寸、背景色、透明度与 JPG 质量，本地转换为 PNG / JPG。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">SVG</span><span class="tool-tag">PNG / JPG</span><span class="tool-tag">尺寸定制</span></div>
         </a>
 
-        <a href="/tools/image/" class="mdui-card tool-hub-card" data-keywords="图片 压缩 webp jpeg png canvas 格式转换">
+        <a href="/tools/image/" class="tool-hub-card" data-keywords="图片 压缩 webp jpeg png canvas 格式转换">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">▣</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">▣</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">图片压缩与转换</h2>
             <p class="tool-hub-desc">纯浏览器本地 Canvas 压缩与格式转换（WebP / JPEG / PNG），支持质量滑块、尺寸限制与压缩率实时对比。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">图片压缩</span><span class="tool-tag">WebP</span><span class="tool-tag">本地处理</span></div>
         </a>
 
-        <a href="/tools/color/" class="mdui-card tool-hub-card" data-keywords="color hex rgb hsl wcag 对比度 颜色 调色">
+        <a href="/tools/color/" class="tool-hub-card" data-keywords="color hex rgb hsl wcag 对比度 颜色 调色">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">◐</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">◐</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">颜色转换与对比度</h2>
             <p class="tool-hub-desc">HEX / RGB / RGBA / HSL 实时互转，提供取色器与 WCAG AA/AAA 前景背景对比度实时检测。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">HEX / RGB / HSL</span><span class="tool-tag">WCAG 对比度</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="tools-section" data-cat="sec">
-      <div class="tools-section-title">编码 &amp; ID 生成</div>
+    <section class="tools-section" data-cat="sec" aria-labelledby="sec-sec">
+      <div class="tools-section-title" id="sec-sec">编码 &amp; ID 生成</div>
       <div class="tools-grid">
-        <a href="/tools/uuid/" class="mdui-card tool-hub-card" data-keywords="uuid v4 v7 ulid nanoid hex 随机 id">
+        <a href="/tools/uuid/" class="tool-hub-card" data-keywords="uuid v4 v7 ulid nanoid hex 随机 id">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⚿</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">⚿</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">UUID / 随机 ID 生成</h2>
             <p class="tool-hub-desc">基于加密级随机数批量生成 UUID v4、时间有序 UUID v7、ULID、NanoID 与随机 Hex，支持大小写与去横杠。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">UUID v4/v7</span><span class="tool-tag">ULID</span><span class="tool-tag">NanoID</span></div>
         </a>
 
-        <a href="/tools/snowflake/" class="mdui-card tool-hub-card" data-keywords="snowflake 雪花算法 分布式 id 64位 32位 二进制">
+        <a href="/tools/snowflake/" class="tool-hub-card" data-keywords="snowflake 雪花算法 分布式 id 64位 32位 二进制">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">❄</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">❄</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">Snowflake ID 生成器</h2>
             <p class="tool-hub-desc">基于 Twitter Snowflake 算法生成 64 位与 32 位分布式唯一 ID，支持自定义节点、批量生成与二进制位段解析。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">雪花算法</span><span class="tool-tag">64位 / 32位</span><span class="tool-tag">位段解析</span></div>
         </a>
 
-        <a href="/tools/codec/" class="mdui-card tool-hub-card" data-keywords="base64 url unicode html jwt md5 sha256 sha512 编码 哈希">
+        <a href="/tools/codec/" class="tool-hub-card" data-keywords="base64 url unicode html jwt md5 sha256 sha512 编码 哈希">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">#</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">#</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">编解码与加密哈希</h2>
             <p class="tool-hub-desc">Base64、URL、Unicode、HTML 实体编解码、JWT Token 本地解析，以及 MD5 / SHA-1 / SHA-256 / SHA-512 计算。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Base64</span><span class="tool-tag">JWT</span><span class="tool-tag">SHA / MD5</span></div>
         </a>
 
-        <a href="/tools/jwt/" class="mdui-card tool-hub-card" data-keywords="jwt token header payload base64 过期时间 校验">
+        <a href="/tools/jwt/" class="tool-hub-card" data-keywords="jwt token header payload base64 过期时间 校验">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">🔑</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">JWT</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">JWT Token 解析器</h2>
             <p class="tool-hub-desc">本地解码 JWT Header 与 Payload，自动识别 exp / iat / nbf 时间戳并检测 Token 是否过期。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">JWT</span><span class="tool-tag">过期检测</span><span class="tool-tag">本地解码</span></div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="tools-section" data-cat="util">
-      <div class="tools-section-title">效率 &amp; 文本工具</div>
+    <section class="tools-section" data-cat="util" aria-labelledby="sec-util">
+      <div class="tools-section-title" id="sec-util">效率 &amp; 文本工具</div>
       <div class="tools-grid">
-        <a href="/tools/timestamp/" class="mdui-card tool-hub-card" data-keywords="时间戳 unix date iso 进制 二进制 十六进制">
+        <a href="/tools/timestamp/" class="tool-hub-card" data-keywords="时间戳 unix date iso 进制 二进制 十六进制">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⏱</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">◴</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">时间戳与进制转换</h2>
             <p class="tool-hub-desc">实时 Unix 时间戳（秒 / 毫秒）与本地时间、UTC、ISO 8601 互转，支持快捷偏移及 2/8/10/16/36 进制转换。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Unix 时间戳</span><span class="tool-tag">ISO 8601</span><span class="tool-tag">进制转换</span></div>
         </a>
 
-        <a href="/tools/regex/" class="mdui-card tool-hub-card" data-keywords="正则 regex 匹配 替换 分组 模板">
+        <a href="/tools/regex/" class="tool-hub-card" data-keywords="正则 regex 匹配 替换 分组 模板">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">.*</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">.*</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">正则表达式测试</h2>
             <p class="tool-hub-desc">实时高亮匹配结果、查看捕获分组详情与替换预览，内置邮箱、手机号、IPv4、URL、中文等常用正则模板。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">实时高亮</span><span class="tool-tag">捕获分组</span><span class="tool-tag">常用模板</span></div>
         </a>
 
-        <a href="/tools/diff/" class="mdui-card tool-hub-card" data-keywords="diff 对比 文本 json 差异">
+        <a href="/tools/diff/" class="tool-hub-card" data-keywords="diff 对比 文本 json 差异">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">±</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">±</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">文本 / JSON 对比</h2>
             <p class="tool-hub-desc">逐行对比两段文本或 JSON 的增删差异，支持忽略行首尾空白，以及对比前一键自动排序格式化 JSON。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Diff</span><span class="tool-tag">JSON 对比</span><span class="tool-tag">差异统计</span></div>
         </a>
 
-        <a href="/tools/cron/" class="mdui-card tool-hub-card" data-keywords="cron 定时任务 quartz spring 执行时间 表达式">
+        <a href="/tools/cron/" class="tool-hub-card" data-keywords="cron 定时任务 quartz spring 执行时间 表达式">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">⏰</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">◷</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">Cron 表达式解析与生成</h2>
             <p class="tool-hub-desc">支持标准 5 位与 Spring/Quartz 6 位 Cron 表达式，内置常用预设并实时推算未来 10 次执行时间。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">Cron</span><span class="tool-tag">Quartz / Linux</span><span class="tool-tag">执行时间</span></div>
         </a>
 
-        <a href="/tools/calc/" class="mdui-card tool-hub-card" data-keywords="calc calculator 科学计算器 三角函数 对数 阶乘 表达式">
+        <a href="/tools/calc/" class="tool-hub-card" data-keywords="calc calculator 科学计算器 三角函数 对数 阶乘 表达式">
           <div>
-            <div class="tool-hub-top"><div class="tool-hub-icon">🧮</div><span class="tool-hub-arrow">打开 →</span></div>
+            <div class="tool-hub-top"><div class="tool-hub-icon" aria-hidden="true">∑</div><span class="tool-hub-arrow">打开 →</span></div>
             <h2 class="tool-hub-title">科学计算器</h2>
             <p class="tool-hub-desc">支持角度/弧度切换、三角函数、对数、阶乘、幂运算、键盘表达式输入与本地计算历史记录。</p>
           </div>
           <div class="tool-hub-tags"><span class="tool-tag">科学计算</span><span class="tool-tag">DEG / RAD</span><span class="tool-tag">历史记录</span></div>
         </a>
       </div>
-    </div>
+    </section>
   </main>
-
-  <footer id="footer" class="mdui-text-center mdui-m-t-5 mdui-p-b-2 mdui-p-t-4 mdui-color-theme">
-    <div class="mdui-container">
-      <div class="mdui-row"><span>&copy; 2015 - 2026 <span style="color:#d9333f" class="iconfont icon-heart"></span> xsgaaaa</span></div>
-    </div>
-  </footer>
-
-  <button id="gotop" class="mdui-fab mdui-fab-fixed mdui-fab-hide mdui-ripple mdui-color-teal" style="z-index:100;"><i class="iconfont icon-arrowup"></i></button>
 
   <script src="/js/mdui.min.js"></script>
   <script src="/js/meadow.js"></script>
-  <script src="/js/tools-common.js?v=5"></script>
+  <script src="/js/tools-common.js?v=12"></script>
   <script src="./js/hub.js"></script>
 </body>
 </html>

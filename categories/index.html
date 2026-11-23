@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="Cache-Control" content="no-siteapp">
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <link rel="shortcut icon" href="/icons/favicon.ico">
   <link rel="stylesheet" href="/css/mdui.min.css">
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/iconfont.css">
-  <link rel="stylesheet" href="/css/tools.css?v=5">
-  <title>分类 - 秘密花园</title>
+  <link rel="stylesheet" href="/css/tools.css?v=12">
+  <meta name="description" content="站点内容分类索引。">
+  <title>分类 - xsgaaaa 的工作台</title>
 </head>
 <body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-teal mdui-theme-accent-blue">
   <header class="mdui-appbar mdui-appbar-fixed">
     <div id="toolbar" class="mdui-toolbar mdui-color-theme">
       <button class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#sidebar', swipe: true}"><i class="iconfont icon-menu"></i></button>
-      <a href="/" class="mdui-typo-headline">秘密花园</a>
+      <a href="/" class="mdui-typo-headline">xsgaaaa 的工作台</a>
       <a href="/categories/" class="header-subtitle mdui-typo-headline">分类</a>
       <div class="mdui-toolbar-spacer"></div>
       <button class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#search'}" mdui-tooltip="{content: 'search'}"><i class="iconfont icon-search"></i></button>
@@ -52,10 +53,14 @@
   </aside>
 
   <main id="main-contain" class="mdui-container mdui-m-t-5">
-    <div class="mdui-card tools-header-card">
-      <h1>📁 文章分类</h1>
-      <p>站点内容分类索引。</p>
-    </div>
+    <nav class="tools-breadcrumb" aria-label="面包屑"><a href="/">首页</a><span>/</span><span aria-current="page">分类</span></nav>
+    <header class="tools-header-card">
+      <div class="page-head-glyph" aria-hidden="true">▥</div>
+      <div class="page-head-text">
+        <h1>文章分类</h1>
+        <p>站点内容分类索引。</p>
+      </div>
+    </header>
     <div class="mdui-card tool-panel" style="padding:24px;">
       <div class="mdui-list">
         <a href="/2020/08/03/leetcode/" class="mdui-list-item mdui-ripple">
@@ -81,6 +86,6 @@
 
   <script src="/js/mdui.min.js"></script>
   <script src="/js/meadow.js"></script>
-  <script src="/js/tools-common.js?v=5"></script>
+  <script src="/js/tools-common.js?v=12"></script>
 </body>
 </html>
